@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--For security purposes, please check: http
+://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
+<header>
+	<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
+
+	<title lang="en">Download Mod for phpBB 3</title>
+	<title lang="de">Download Mod für phpBB 3</title>
+
+	<description lang="en"><![CDATA[This mod generates a page of downloads for your phpBB 3 forum]]></description>
+	<description lang="de"><![CDATA[Diese Modifikation generiert eine Seite für Downloads in deinem phpBB 3 Forum]]></description>
+
+	<author-notes lang="en"><![CDATA[For Update History take a look on http://phpbb3.oxpus.net/viewtopic.php?f=5&t=348]]></author-notes>
+	<author-notes lang="de"><![CDATA[Für die Update-History bitte nachschauen unter http://phpbb3.oxpus.net/viewtopic.php?f=5&t=348]]></author-notes>
+
+	<author-group>
+		<author>
+			<email>webmaster@oxpus.de</email>
+			<homepage>http://www.oxpus.de</homepage>
+			<realname>Karsten Ude</realname>
+			<username>OXPUS</username>
+			<contributions />
+		</author>
+	</author-group>
+
+	<mod-version>6.5.27</mod-version>
+
+	<installation>
+		<level>easy</level>
+		<time>1200</time>
+		<target-version>3.0.12</target-version>
+	</installation>
+
+	<link-group>
+		<link type="language" lang="de" href="contrib/de.xml">Anleitung für das deutsche Sprachpaket</link>
+		<link type="language" lang="en" href="contrib/de.xml">Manual for German language set</link>
+		<link type="template" lang="de" href="contrib/subsilver2.xml">Anleitung für das Style subsilver2</link>
+		<link type="template" lang="en" href="contrib/subsilver2.xml">Manual for subsilver2 styleset</link>
+	</link-group>
+
+</header>
+
+<action-group>
+	<copy>
+		<file from="root/adm/mods/download_mod_version.php" to="adm/mods/download_mod_version.php" />
+		<file from="root/adm/style/dl_mod/*.*" to="adm/style/dl_mod/*.*" />
+		<file from="root/dl_mod/admin/*.*" to="dl_mod/admin/*.*" />
+		<file from="root/dl_mod/classes/*.*" to="dl_mod/classes/*.*" />
+		<file from="root/dl_mod/downloads/.htaccess" to="dl_mod/downloads/.htaccess" />
+		<file from="root/dl_mod/includes/*.*" to="dl_mod/includes/*.*" />
+		<file from="root/dl_mod/js/dl_main.js" to="dl_mod/js/dl_main.js" />
+		<file from="root/dl_mod/js/ajax/*.*" to="dl_mod/js/ajax/*.*" />
+		<file from="root/dl_mod/js/jquery/*.*" to="dl_mod/js/jquery/*.*" />
+		<file from="root/dl_mod/js/jquery/skins/tango/*.*" to="dl_mod/js/jquery/skins/tango/*.*" />
+		<file from="root/dl_mod/thumbs/*.*" to="dl_mod/thumbs/*.*" />
+		<file from="root/dl_mod/*.*" to="dl_mod/*.*" />
+		<file from="root/includes/acp/acp_downloads.php" to="includes/acp/acp_downloads.php" />
+		<file from="root/includes/acp/info/acp_downloads.php" to="includes/acp/info/acp_downloads.php" />
+		<file from="root/includes/ucp/ucp_downloads.php" to="includes/ucp/ucp_downloads.php" />
+		<file from="root/includes/ucp/info/ucp_downloads.php" to="includes/ucp/info/ucp_downloads.php" />
+		<file from="root/includes/functions_dl_fields.php" to="includes/functions_dl_fields.php" />
+		<file from="root/language/en/acp/permissions_dl_mod.php" to="language/en/acp/permissions_dl_mod.php" />
+		<file from="root/language/en/email/*.*" to="language/en/email/*.*" />
+		<file from="root/language/en/mods/*.*" to="language/en/mods/*.*" />
+		<file from="root/styles/prosilver/imageset/en/*.*" to="styles/prosilver/imageset/en/*.*" />
+		<file from="root/styles/prosilver/imageset/*.*" to="styles/prosilver/imageset/*.*" />
+		<file from="root/styles/prosilver/template/dl_mod/*.*" to="styles/prosilver/template/dl_mod/*.*" />
+		<file from="root/styles/prosilver/theme/images/*.*" to="styles/prosilver/theme/images/*.*" />
+		<file from="root/styles/prosilver/theme/*.*" to="styles/prosilver/theme/*.*" />
+		<file from="root/umil/*.*" to="umil/*.*" />
+		<file from="root/dl_help.php" to="dl_help.php" />
+		<file from="root/downloads.php" to="downloads.php" />
+		<file from="root/hacks_list.php" to="hacks_list.php" />
+		<file from="root/install.php" to="install.php" />
+	</copy>
+
+	<open src="includes/constants.php">
+		<edit>
+		<find><![CDATA[// Additional tables]]></find>
+		<action type="after-add"><![CDATA[// Download MOD 6
+define('DL_AUTH_TABLE',				$table_prefix . 'dl_auth');
+define('DL_CAT_TABLE',				$table_prefix . 'downloads_cat');
+define('DL_REM_TRAF_TABLE',			$table_prefix . 'dl_rem_traf');
+define('DL_CAT_TRAF_TABLE',			$table_prefix . 'dl_cat_traf');
+define('DL_EXT_BLACKLIST',			$table_prefix . 'dl_ext_blacklist');
+define('DL_RATING_TABLE',			$table_prefix . 'dl_ratings');
+define('DOWNLOADS_TABLE',			$table_prefix . 'downloads');
+define('DL_STATS_TABLE',			$table_prefix . 'dl_stats');
+define('DL_COMMENTS_TABLE',			$table_prefix . 'dl_comments');
+define('DL_BANLIST_TABLE',			$table_prefix . 'dl_banlist');
+define('DL_FAVORITES_TABLE',		$table_prefix . 'dl_favorites');
+define('DL_NOTRAF_TABLE',			$table_prefix . 'dl_notraf');
+define('DL_HOTLINK_TABLE',			$table_prefix . 'dl_hotlink');
+define('DL_BUGS_TABLE',				$table_prefix . 'dl_bug_tracker');
+define('DL_BUG_HISTORY_TABLE',		$table_prefix . 'dl_bug_history');
+define('DL_VERSIONS_TABLE',			$table_prefix . 'dl_versions');
+define('DL_FIELDS_TABLE',			$table_prefix . 'dl_fields');
+define('DL_FIELDS_DATA_TABLE',		$table_prefix . 'dl_fields_data');
+define('DL_FIELDS_LANG_TABLE',		$table_prefix . 'dl_fields_lang');
+define('DL_LANG_TABLE',				$table_prefix . 'dl_lang');
+define('DL_IMAGES_TABLE',			$table_prefix . 'dl_images');]]></action>
+		</edit>
+	</open>
+
+	<open src="includes/acp/acp_language.php">
+		<edit>
+		<find><![CDATA[					'icon_back_top', 'icon_contact_aim', 'icon_contact_email', 'icon_contact_icq', 'icon_contact_jabber', 'icon_contact_msnm', 'icon_contact_pm', 'icon_contact_yahoo', 'icon_contact_www', 'icon_post_delete', 'icon_post_edit', 'icon_post_info', 'icon_post_quote', 'icon_post_report', 'icon_user_online', 'icon_user_offline', 'icon_user_profile', 'icon_user_search', 'icon_user_warn', 'button_pm_forward', 'button_pm_new', 'button_pm_reply', 'button_topic_locked', 'button_topic_new', 'button_topic_reply',]]></find>
+				<inline-edit>
+					<inline-find><![CDATA['button_topic_reply',]]></inline-find>
+					<inline-action type="after-add"><![CDATA[ 'button_download_search', 'button_download_upload',]]></inline-action>
+				</inline-edit>
+		</edit>
+	</open>
+
+	<open src="includes/acp/acp_styles.php">
+		<edit>
+		<find><![CDATA[				'icon_back_top', 'icon_contact_aim', 'icon_contact_email', 'icon_contact_icq', 'icon_contact_jabber', 'icon_contact_msnm', 'icon_contact_pm', 'icon_contact_yahoo', 'icon_contact_www', 'icon_post_delete', 'icon_post_edit', 'icon_post_info', 'icon_post_quote', 'icon_post_report', 'icon_user_online', 'icon_user_offline', 'icon_user_profile', 'icon_user_search', 'icon_user_warn', 'button_pm_forward', 'button_pm_new', 'button_pm_reply', 'button_topic_locked', 'button_topic_new', 'button_topic_reply',]]></find>
+				<inline-edit>
+					<inline-find><![CDATA['button_topic_reply',]]></inline-find>
+					<inline-action type="after-add"><![CDATA[ 'button_download_search', 'button_download_upload',]]></inline-action>
+				</inline-edit>
+		</edit>
+		<edit>
+		<find><![CDATA[			'user'		=> array(
+				'user_icon1', 'user_icon2', 'user_icon3', 'user_icon4', 'user_icon5', 'user_icon6', 'user_icon7', 'user_icon8', 'user_icon9', 'user_icon10',
+			),]]></find>
+		<action type="before-add"><![CDATA[			'dlmod'		=> array(
+				'dl_banlist', 'dl_blue', 'dl_edit', 'dl_green', 'dl_grey', 'dl_new', 'dl_rate_no', 'dl_rate_yes', 'dl_red', 'dl_white', 'dl_yellow', 'dl_default', 'dl_new_edit', 'dl_file_new', 'dl_file_edit', 'dl_button',
+			),]]></action>
+		</edit>
+	</open>
+
+	<open src="includes/functions.php">
+		<edit>
+		<find><![CDATA[	// Which timezone?
+	$tz = ($user->data['user_id'] != ANONYMOUS) ? strval(doubleval($user->data['user_timezone'])) : strval(doubleval($config['board_timezone']));]]></find>
+		<action type="before-add"><![CDATA[	// Download MOD 6
+	$db->return_on_error = true;
+	if ( isset($user->data['user_new_download']) && $user->data['user_new_download'] && !defined('IN_ERROR_HANDLER'))
+	{
+		$sql = 'UPDATE ' . USERS_TABLE . '
+			SET user_new_download = 0
+			WHERE user_id = ' . (int)$user->data['user_id'];
+		$db->sql_query($sql);
+
+		if ($user->data['user_dl_note_type'])
+		{
+			$template->assign_var('S_NEW_DL_POPUP', true);
+			$template->assign_vars(array(
+				'U_NEW_DOWNLOAD_POPUP' => append_sid("{$phpbb_root_path}downloads.$phpEx", 'view=popup'))
+			);
+		}
+		else
+		{
+			$template->assign_var('S_NEW_DL_MESSAGE', true);
+			$template->assign_vars(array(
+				'NEW_DOWNLOAD_MESSAGE' => sprintf($user->lang['NEW_DOWNLOAD'], '<a href="'.append_sid("{$phpbb_root_path}downloads.$phpEx").'">', '</a>'))
+			);
+		}
+	}
+
+	$u_hacks_list = $img_hacklist = $l_hacks_list = '';
+
+	if (isset($config['dl_use_hacklist']) && $config['dl_use_hacklist'])
+	{
+		$sql = 'SELECT COUNT(id) AS total FROM ' . DOWNLOADS_TABLE . '
+			WHERE hacklist = 1';
+		$result = $db->sql_query($sql);
+
+		if ($result)
+		{
+			$row = $db->sql_fetchrow($result);
+			$total = $row['total'];
+
+			if ($total)
+			{
+				$u_hacks_list = append_sid("{$phpbb_root_path}hacks_list.$phpEx");
+				$l_hacks_list = $user->lang['DL_HACKS_LIST'];
+				$img_hacklist = $user->img('menu_hacklist');
+
+				$template->assign_var('S_HACKLIST_ON', true);
+			}
+			else
+			{
+			}
+		}
+		$db->sql_freeresult($result);
+	}
+
+	if ($user->data['is_registered'])
+	{
+		$sql = 'SELECT count(d.id) as total FROM ' . DOWNLOADS_TABLE . ' d, ' . DL_CAT_TABLE . ' c
+			WHERE c.id = d.cat
+				AND c.bug_tracker = 1';
+		$result = $db->sql_query($sql);
+
+		if ($result)
+		{
+			$row = $db->sql_fetchrow($result);
+		}
+		$db->sql_freeresult($result);
+
+		if (isset($row) && $row['total'] != 0)
+		{
+			$template->assign_var('S_BUGTRACKER_ON', true);
+			$template->assign_vars(array(
+				'L_BUG_TRACKER' => $user->lang['DL_BUG_TRACKER'],
+				'U_BUG_TRACKER' => append_sid("{$phpbb_root_path}downloads.$phpEx", 'view=bug_tracker'))
+			);
+		}
+	}
+
+	$dl_mod_is_active = true;
+	$dl_mod_link_show = true;
+
+	if (isset($config['dl_active']) && !$config['dl_active'])
+	{
+		if (isset($config['dl_off_now_time']) && $config['dl_off_now_time'])
+		{
+			$dl_mod_is_active = false;
+		}
+		else
+		{
+			if (isset($config['dl_off_from']) && isset($config['dl_off_till']))
+			{
+				$curr_time = (date('H', time()) * 60) + date('i', time());
+				$off_from = (substr($config['dl_off_from'], 0, 2) * 60) + (substr($config['dl_off_from'], -2));
+				$off_till = (substr($config['dl_off_till'], 0, 2) * 60) + (substr($config['dl_off_till'], -2));
+
+				if ($curr_time >= $off_from && $curr_time < $off_till)
+				{
+					$dl_mod_is_active = false;
+				}
+			}
+		}
+	}
+
+	if (!$dl_mod_is_active && isset($config['dl_off_hide']) && $config['dl_off_hide'])
+	{
+		$dl_mod_link_show = false;
+	}
+
+	if (!$dl_mod_is_active && $auth->acl_get('a_') && isset($config['dl_on_admins']) && $config['dl_on_admins'])
+	{
+		$dl_mod_link_show = true;
+	}
+
+	if ($dl_mod_link_show)
+	{
+		$template->assign_var('S_SHOW_DL_LINK', true);
+	}
+
+	$db->return_on_error = false;
+	// End Download MOD 6]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[		'L_ONLINE_EXPLAIN'	=> $l_online_time,]]></find>
+		<action type="after-add"><![CDATA[		'L_HACKLIST' => $l_hacks_list,
+		'IMG_HACKLIST' => $img_hacklist,
+		'L_DOWNLOADS' => $user->lang['DOWNLOADS'],
+		'U_HACKLIST' => $u_hacks_list,
+		'U_DL_NAVS' => append_sid("{$phpbb_root_path}downloads.$phpEx"),]]></action>
+		</edit>
+	</open>
+
+	<open src="includes/functions_content.php">
+		<edit>
+		<find><![CDATA[	switch ($type)
+	{
+		case MAGIC_URL_LOCAL:
+			$tag			= 'l';
+			$relative_url	= preg_replace('/[&?]sid=[0-9a-f]{32}$/', '', preg_replace('/([&?])sid=[0-9a-f]{32}&/', '$1', $relative_url));
+			$url			= $url . '/' . $relative_url;
+			$text			= $relative_url;]]></find>
+		<action type="after-add"><![CDATA[			// Download MOD 6 - Check for download title, if directlink to download was given
+			$text =  preg_replace_callback("#(downloads\.php\?view=detail&df_id=)(\d+)#i", 'dl_mod_callback', $text);
+			// Download MOD 6]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[/**
+* make_clickable function
+*]]></find>
+		<action type="before-add"><![CDATA[/*
+* Download MOD 6
+* reformatting directlinks to downloads into links with download titles
+*/
+function dl_mod_callback($part)
+{
+	if($part[1] == "downloads.php?view=detail&df_id=")
+	{
+		global $db;
+
+		$sql = 'SELECT description, desc_uid, desc_bitfield, desc_flags FROM ' . DOWNLOADS_TABLE . '
+			WHERE id = ' . (int) $part[2];
+		$result = $db->sql_query($sql);
+
+		$row = $db->sql_fetchrow($result);
+		$title = $row['description'];
+		$desc_uid = $row['desc_uid'];
+		$desc_bitfield = $row['desc_bitfield'];
+		$desc_flags = $row['desc_flags'];
+
+		$db->sql_freeresult($result);
+
+		$title = generate_text_for_display($title, $desc_uid, $desc_bitfield, $desc_flags);
+
+		return $title;
+	}
+
+	return $part[1].$part[2];
+}]]></action>
+		</edit>
+	</open>
+
+	<open src="includes/functions_posting.php">
+		<edit>
+		<find><![CDATA[	// Collect the necessary information for updating the tables
+	$sql_data[FORUMS_TABLE] = '';
+	switch ($post_mode)]]></find>
+		<action type="before-add"><![CDATA[	// Download MOD 6 - Drop Traffic on Topic/Post delete
+	include($phpbb_root_path . 'dl_mod/classes/class_dlmod.' . $phpEx);
+	$dl_mod = new dl_mod($phpbb_root_path, $phpEx);
+	$dl_mod->register();
+	dl_init::init();
+	$user_traffics_on = DL_USERS_TRAFFICS;
+	$founder_traffics_off = FOUNDER_TRAFFICS_OFF;
+	$dl_mod->unregister();
+	unset($dl_mod);
+
+	if ($config['dl_drop_traffic_postdel'] && !$config['dl_traffic_off'] && $user_traffics_on && !$founder_traffics_off)
+	{
+		if ($post_mode == 'delete_topic')
+		{
+			$drop_traffic_amount = $config['dl_newtopic_traffic'];
+		}
+		else
+		{
+			$drop_traffic_amount = $config['dl_reply_traffic'];
+		}
+
+		$sql = 'SELECT user_traffic FROM ' . USERS_TABLE . '
+			WHERE user_id = ' . (int) $data['poster_id'];
+		$result = $db->sql_query($sql);
+
+		$row = $db->sql_fetchrow($result);
+		$user_traffic = $row['user_traffic'];
+		$db->sql_freeresult($result);
+
+		if ($user_traffic < $drop_traffic_amount)
+		{
+			$user_traffic = 0;
+		}
+		else
+		{
+			$user_traffic -= $drop_traffic_amount;
+		}
+
+		$sql = 'UPDATE ' . USERS_TABLE . '
+			SET user_traffic = ' . (int) $user_traffic . '
+			WHERE user_id = ' . (int) $data['poster_id'];
+		$db->sql_query($sql);
+	}
+	// Download MOD 6 - Drop Traffic on Topic/Post delete]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[	// we need to update the last forum information
+	// only applicable if the topic is not global and it is approved]]></find>
+		<action type="before-add"><![CDATA[	// Download MOD 6
+	if (!class_exists('dl_mod'))
+	{
+		include($phpbb_root_path . 'dl_mod/classes/class_dlmod.' . $phpEx);
+		$dl_mod = new dl_mod($phpbb_root_path, $phpEx);
+		$dl_mod->register();
+		dl_init::init();
+		$unregister = true;
+	}
+	else
+	{
+		$unregister = false;
+	}
+	$user_traffics_on = DL_USERS_TRAFFICS;
+	$founder_traffics_off = FOUNDER_TRAFFICS_OFF;
+	if ($unregister)
+	{
+		$dl_mod->unregister();
+		unset($dl_mod);
+	}
+
+	if ($config['dl_enable_post_dl_traffic'] && !$config['dl_traffic_off'] && $user_traffics_on && !$founder_traffics_off)
+	{
+		if (!$config['dl_delay_post_traffic'] || ((time() - $user->data['user_regdate']) / 84600) > $config['dl_delay_post_traffic'])
+		{
+			$dl_traffic = 0;
+
+			if ($mode == 'post' || $mode == 'newtopic')
+			{
+				$dl_traffic = $config['dl_newtopic_traffic'];
+			}
+			else if ($mode == 'reply' || $mode == 'quote')
+			{
+				$dl_traffic = $config['dl_reply_traffic'];
+			}
+
+			if (intval($dl_traffic) > 0)
+			{
+				$sql = 'UPDATE ' . USERS_TABLE . '
+					SET user_traffic = user_traffic + ' . (int) $dl_traffic . '
+					WHERE user_id = ' . (int) $user->data['user_id'];
+				$db->sql_query($sql);
+			}
+		}
+	}
+	// Download MOD 6]]></action>
+		</edit>
+	</open>
+
+	<open src="includes/functions_user.php">
+		<edit>
+		<find><![CDATA[	$update_ary = array(
+		FORUMS_TABLE			=> array('forum_last_poster_name'),
+		MODERATOR_CACHE_TABLE	=> array('username'),
+		POSTS_TABLE				=> array('post_username'),
+		TOPICS_TABLE			=> array('topic_first_poster_name', 'topic_last_poster_name'),
+	);]]></find>
+		<action type="after-add"><![CDATA[
+	$update_ary = array_merge($update_ary, array(
+		DL_BANLIST_TABLE		=> array('username'),
+		DL_COMMENTS_TABLE		=> array('username'),
+		DL_STATS_TABLE			=> array('username'),
+	));]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[	$table_ary = array(USERS_TABLE, USER_GROUP_TABLE, TOPICS_WATCH_TABLE, FORUMS_WATCH_TABLE, ACL_USERS_TABLE,]]></find>
+		<action type="after-add"><![CDATA[	$table_ary = array_merge($table_ary, array(DL_NOTRAF_TABLE));]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[	foreach ($table_ary as $table)
+	{
+		$sql = "DELETE FROM $table
+			WHERE user_id = $user_id";
+		$db->sql_query($sql);
+	}
+
+	$cache->destroy('sql', MODERATOR_CACHE_TABLE);]]></find>
+		<action type="after-add"><![CDATA[	// Delete Download Favorites from this user
+	$sql = "DELETE FROM " . DL_FAVORITES_TABLE . "
+		WHERE fav_user_id = $user_id";
+	$db->sql_query($sql);]]></action>
+		</edit>
+	</open>
+
+	<open src="includes/session.php">
+		<edit>
+		<find><![CDATA[		$this->add_lang($lang_set);
+		unset($lang_set);]]></find>
+		<action type="after-add"><![CDATA[	// Download MOD 6
+	$this->add_lang('mods/downloads');
+	// Download MOD 6]]></action>
+		</edit>
+	</open>
+
+	<open src="language/en/help_faq.php">
+		<edit>
+		<find><![CDATA[	array(
+		0 => '--',
+		1 => 'phpBB 3 Issues'
+	),]]></find>
+		<action type="before-add"><![CDATA[	array(
+		0 => '--',
+		1 => 'Downloads'
+	),
+	array(
+		0 => 'Where I can find the Downloads?',
+		1 => 'Links to the Downloads are located in the board navigation. Directlink: [<a href="{DL_FAQ_URL}">Downloads</a>]'
+	),
+	array(
+		0 => 'What means {DL_IMG_BLUE} ?',
+		1 => 'No download possible. The overall traffic set by the administration for each download or the displayed category is used for this month.'
+	),
+	array(
+		0 => 'What means {DL_IMG_RED} ?',
+		1 => 'No download possible. This can be:<br />- The download is blocked by an Administrator.<br />- The user is not logged in but the download is only allowed to registered users.<br />- The user have not enough traffic to download this file.<br />- The Administrator has entered a minimum number ob posts, the user doesn\'t have.<br />- The traffic limit for this file is completely used.'
+	),
+	array(
+		0 => 'What means {DL_IMG_GREY} ?',
+		1 => 'External Source. The download will be started by an external server. This will be handled as {DL_IMG_GREEN} . The usertraffic and overall traffic will not be decreased.'
+	),
+	array(
+		0 => 'What means {DL_IMG_WHITE} ?',
+		1 => 'Like {DL_IMG_GREEN} the user traffic will not be decrease. But only logged in users can download for free. The overall traffic will go down.'
+	),
+	array(
+		0 => 'What means {DL_IMG_YELLOW} ?',
+		1 => 'Download possible with restrictions. The download is just possible for registered users. The user must be logged in. The file size will be substrated from your traffic and also be substrated from the overall traffic.'
+	),
+	array(
+		0 => 'What means {DL_IMG_GREEN} ?',
+		1 => 'Free Download. The download will be not restricted. This file can also be downloaded by guests. You are not needed to be logged in. Your traffic will not decreased but the overall traffic will be go down.'
+	),
+	array(
+		0 => 'Why can I not download any file?',
+		1 => 'This can have many reasons. Look under {DL_IMG_BLUE} and {DL_IMG_RED} '
+	),
+	array(
+		0 => 'How and when I get new traffic for my account?',
+		1 => 'After the first login the user will get a timestamp. Each first day of a month the user will enter the downloads the traffic will be refreshed. Ask your administrator how much you will get.'
+	),
+	array(
+		0 => 'I wants to download still one more file, but I have not any traffic left?',
+		1 => 'In this cases ask the administrator. Only he can decide to increase the user traffic before the account will get automaticaly new traffic the next month.'
+	),
+	array(
+		0 => 'How I can rate Downloads?',
+		1 => 'Behind each download into a category or the detail view you will find a section for rating.<br />By click on "Rate" a registered user can rate the download from 1 point (very bad) to 10 points (very good). You can rate a download only one time.'
+	),]]></action>
+		</edit>
+	</open>
+
+	<open src="styles/prosilver/imageset/en/imageset.cfg">
+		<edit>
+			<find><![CDATA[img_button_topic_reply = button_topic_reply.gif*25*102]]></find>
+			<action type="after-add"><![CDATA[img_button_download_search = button_download_search.gif*16*49
+img_button_download_upload = button_download_upload.gif*25*96]]></action>
+		</edit>
+	</open>
+
+	<open src="styles/prosilver/imageset/imageset.cfg">
+		<edit>
+		<find><![CDATA[img_icon_user_warn = icon_user_warn.gif*20*20]]></find>
+		<action type="after-add"><![CDATA[img_dl_blue = dl_blue.png*22*22
+img_dl_default = dl_default.png*32*32
+img_dl_edit = dl_edit.png*32*32
+img_dl_file_edit = dl_file_edit.png*16*16
+img_dl_file_new = dl_file_new.png*16*16
+img_dl_green = dl_green.png*22*22
+img_dl_grey = dl_grey.png*22*22
+img_dl_new = dl_new.png*32*32
+img_dl_new_edit = dl_new_edit.png*32*32
+img_dl_rate_no = dl_rate_no.png*22*22
+img_dl_rate_yes = dl_rate_yes.png*22*22
+img_dl_button = dl_button.png*44*204
+img_dl_red = dl_red.png*22*22
+img_dl_white = dl_white.png*22*22
+img_dl_yellow = dl_yellow.png*22*22]]></action>
+		</edit>
+	</open>
+
+	<open src="styles/prosilver/template/overall_header.html">
+		<edit>
+		<find><![CDATA[<link href="{T_THEME_PATH}/print.css" rel="stylesheet" type="text/css" media="print" title="printonly" />]]></find>
+		<action type="before-add"><![CDATA[<!-- IF S_NEW_DL_POPUP -->
+<script language="Javascript" type="text/javascript">
+// <![CDATA[
+	window.open('{U_NEW_DOWNLOAD_POPUP}', '_blank', 'HEIGHT=225,resizable=yes,WIDTH=400');
+// ]] >
+</script>
+<!-- ENDIF -->
+
+<!-- IF S_DL_LYTEBOX -->
+<script type="text/javascript" src="{ROOT_PATH}dl_mod/js/lytebox/lytebox.js"></script>
+<link rel="stylesheet" type="text/css" href="{ROOT_PATH}dl_mod/js/lytebox/lytebox.css" />
+<!-- ENDIF -->
+
+<!-- IF S_TOTAL_IMAGES -->
+<script type="text/javascript" src="{ROOT_PATH}dl_mod/js/jquery/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="{ROOT_PATH}dl_mod/js/jquery/jquery.jcarousel.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{ROOT_PATH}dl_mod/js/jquery/skins/tango/skin.css" />
+<!-- ENDIF -->]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[				<li class="icon-home"><a href="{U_INDEX}" accesskey="h">{L_INDEX}</a> <!-- BEGIN navlinks --> <strong>&#8249;</strong> <a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a><!-- END navlinks --></li>]]></find>
+		<inline-edit>
+			<inline-find><![CDATA[<!-- END navlinks -->]]></inline-find>
+			<inline-action type="after-add"><![CDATA[ <!-- BEGIN dl_nav --> <strong>&#8249;</strong> <a href="{dl_nav.U_DOWNLOAD}">{dl_nav.L_DOWNLOAD}</a><!-- END dl_nav -->]]></inline-action>
+		</inline-edit>
+		</edit>
+		<edit>
+		<find><![CDATA[				<li class="icon-faq"><a href="{U_FAQ}" title="{L_FAQ_EXPLAIN}">{L_FAQ}</a></li>]]></find>
+		<action type="after-add"><![CDATA[				<!-- IF S_SHOW_DL_LINK --><li class="icon-download"><a href="{U_DL_NAVS}" title="{L_DOWNLOADS}">{L_DOWNLOADS}</a></li><!-- ENDIF -->]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[				<!-- IF not S_IS_BOT -->]]></find>
+		<action type="after-add"><![CDATA[					<!-- IF S_HACKLIST_ON --><li class="icon-hacklist"><a href="{U_HACKLIST}" title="{L_HACKLIST}">{L_HACKLIST}</a></li><!-- ENDIF -->
+					<!-- IF S_BUGTRACKER_ON --><li class="icon-tracker"><a href="{U_BUG_TRACKER}" title="{L_BUG_TRACKER}">{L_BUG_TRACKER}</a></li><!-- ENDIF -->]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[		 <!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->]]></find>
+		<action type="before-add"><![CDATA[		<!-- IF S_NEW_DL_MESSAGE -->
+			<div id="message" class="rules">
+				<div class="inner"><span class="corners-top"><span></span></span>
+					{NEW_DOWNLOAD_MESSAGE}
+				<span class="corners-bottom"><span></span></span></div>
+			</div>
+		<!-- ENDIF -->]]></action>
+		</edit>
+	</open>
+
+	<open src="styles/prosilver/theme/bidi.css">
+		<edit>
+		<find><![CDATA[.rtl .sitehome, .rtl .icon-faq, .rtl .icon-members, .rtl .icon-home, .rtl .icon-ucp, .rtl .icon-register, .rtl .icon-logout,]]></find>
+		<action type="after-add"><![CDATA[.rtl .icon-download, .rtl .icon-hacklist, .rtl .icon-tracker,]]></action>
+		</edit>
+	</open>
+
+	<open src="styles/prosilver/theme/buttons.css">
+		<edit>
+		<find><![CDATA[.sitehome, .icon-faq, .icon-members, .icon-home, .icon-ucp, .icon-register, .icon-logout,]]></find>
+		<action type="after-add"><![CDATA[.icon-download, .icon-hacklist, .icon-tracker,]]></action>
+		</edit>
+	</open>
+
+	<open src="styles/prosilver/theme/colours.css">
+		<edit>
+		<find><![CDATA[.icon-search					{ background-image: url("{T_THEME_PATH}/images/icon_search.gif"); }]]></find>
+		<action type="after-add"><![CDATA[.icon-download					{ background-image: url("{T_THEME_PATH}/images/icon_dl.gif"); }
+.icon-hacklist					{ background-image: url("{T_THEME_PATH}/images/icon_hl.gif"); }
+.icon-tracker					{ background-image: url("{T_THEME_PATH}/images/icon_bt.gif"); }]]></action>
+		</edit>
+	</open>
+
+	<open src="faq.php">
+		<edit>
+		<find><![CDATA[include($phpbb_root_path . 'common.' . $phpEx);]]></find>
+		<action type="after-add"><![CDATA[include($phpbb_root_path . 'dl_mod/classes/class_dl_faq.' . $phpEx);]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[	$template->assign_block_vars('faq_block.faq_row', array(
+		'FAQ_QUESTION'		=> $help_ary[0],]]></find>
+		<action type="before-add"><![CDATA[	$help_ary[0] = dl_faq::dl_faq_format($help_ary[0]);
+	$help_ary[1] = dl_faq::dl_faq_format($help_ary[1]);
+]]></action>
+		</edit>
+	</open>
+
+	<open src="styles/prosilver/theme/stylesheet.css">
+		<edit>
+			<find><![CDATA[@import url("colours.css");]]></find>
+			<action type="after-add"><![CDATA[@import url("dlmod.css");]]></action>
+		</edit>
+	</open>
+
+	<open src="memberlist.php">
+		<edit>
+		<find><![CDATA[		else
+		{
+			$member['posts_in_queue'] = 0;
+		}]]></find>
+		<action type="after-add"><![CDATA[		// Download MOD 6
+		if (!$config['dl_traffic_off'])
+		{
+			if ($member['user_traffic'] < 1024)
+			{
+				$output_value = $member['user_traffic'];
+				$output_desc = '&nbsp;&nbsp;'.$user->lang['DL_BYTES'];
+			}
+			else if ($member['user_traffic'] < 1048576)
+			{
+				$output_value = $member['user_traffic'] / 1024;
+				$output_desc = '&nbsp;'.$user->lang['DL_KB'];
+			}
+			else if ($member['user_traffic'] < 1073741824)
+			{
+				$output_value = $member['user_traffic'] / 1048576;
+				$output_desc = '&nbsp;'.$user->lang['DL_MB'];
+			}
+			else
+			{
+				$output_value = $member['user_traffic'] / 1073741824;
+				$output_desc = '&nbsp;'.$user->lang['DL_GB'];
+			}
+
+			$output_value = round($output_value, 2);
+
+			$user_traffic = $output_value . $output_desc;
+
+			$template->assign_block_vars('custom_fields', array(
+				'PROFILE_FIELD_NAME'	=> $user->lang['DOWNLOADS'] . ' ' . $user->lang['TRAFFIC'],
+				'PROFILE_FIELD_VALUE'	=> $user_traffic,
+			));
+		}
+		// Download MOD 6]]></action>
+		</edit>
+	</open>
+
+   <open src="viewonline.php">
+		<edit>
+		<find><![CDATA[		case 'report':
+			$location = $user->lang['REPORTING_POST'];
+			$location_url = append_sid("{$phpbb_root_path}index.$phpEx");
+		break;]]></find>
+		<action type="after-add"><![CDATA[		case 'downloads':
+			$location = $user->lang['DL_PAGE_DOWNLOADS'];
+			$location_url = append_sid("{$phpbb_root_path}downloads.$phpEx");
+		break;
+
+		case 'hacks_list':
+			$location = $user->lang['DL_PAGE_DL_HACKSLIST'];
+			$location_url = append_sid("{$phpbb_root_path}hacks_list.$phpEx");
+		break;]]></action>
+		</edit>
+	</open>
+
+	<php-installer>install.php</php-installer>
+
+	<diy-instructions lang="en"><![CDATA[After the installation
+----------------------
+Create a new folder /dl_mod/thumbs/ and set the permissions to CHMOD 0777.
+
+If the installation script was not able to set the needed folder permissions, set the
+permissions of the folder dl_mod/downloads/ and all subfolders to CHMOD 0777
+(if you use an UNIX/Linux system) manually otherwise the MOD can not upload or handle any file!
+
+At least run the installer install.php to update your database. Please delete this file after installing.
+
+Attention:
+The MOD Installer needs for update at least the MOD release 6.3.4.
+If you will update from an older MOD release, please run before use the latest one the installer from the MOD package 6.5.3 or older.
+
+This mod uses Lytebox. Please download this package from http://lytebox.com/ and decompress the file.
+After this upload alle the files as tey are to the folder forumroot/dl_mod/js/lytebox/]]></diy-instructions>
+	<diy-instructions lang="de"><![CDATA[Nach der Installation
+----------------------
+Erstelle den Ordner /dl_mod/thumbs/ und setze die Zugriffsberechtigungen auf CHMOD 0777.
+
+Wenn das Installationsscript Orderrechte nicht korrekt setzt, dann stelle bitte die Zugriffsrechte für
+den Ordner /dl_mod/downloads und allen Unterordern manuell auf CHMOD 0777
+(nur wenn du auch unter UNIX/Linux arbeitest), da die Modifikation ansonsten Dateien nicht verwalten kann!
+
+
+Zuletzt führe bitte den Installer install.php aus, um deine Datenbank für die Modifikation einzurichten. Nach der Installation lösche dann bitte diese Datei wieder.
+
+Achtung:
+Der MOD Installer benötigt zum Aktualisieren mindestens die MOD Version 6.3.4.
+Wenn du von einer änderen MOD Version aktualisieren willst, verwende zunächst den Installer der MOD Version 6.5.3 oder älter.
+
+Diese MOD verwendet Lightbox2. Bitte lade dieses Paket von http://www.huddletogether.com/projects/lightbox2/ herunter und entpacke die Datei.
+Anschließend lade alle Dateien wie sie sind in den Ordner forumroot/dl_mod/js/lytebox/]]></diy-instructions>
+</action-group>
+
+</mod>

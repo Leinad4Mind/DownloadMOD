@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--For security purposes, please check: http
+://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
+<header>
+	<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
+
+	<title lang="en">Download Mod for phpBB 3</title>
+	<title lang="de">Download Mod für phpBB 3</title>
+
+	<description lang="en">Installation pack for subsilver 2</description>
+	<description lang="de">Installationspaket für subsilver 2</description>
+
+	<author-group>
+		<author>
+		<email>webmaster@oxpus.de</email>
+		<homepage>http://www.oxpus.de</homepage>
+		<realname>Karsten Ude</realname>
+		<username>OXPUS</username>
+		<contributions />
+		</author>
+	</author-group>
+
+	<mod-version>1.0.0</mod-version>
+
+	<installation>
+		<level>easy</level>
+		<time>500</time>
+		<target-version>3.0.12</target-version>
+	</installation>
+
+	<link-group>
+		<link type="parent" lang="de" href="../install_mod.xml">Installations-Anleitung</link>
+		<link type="parent" lang="en" href="../install_mod.xml">Install</link>
+		<link type="language" lang="de" href="de.xml">Anleitung für das deutsche Sprachpaket</link>
+		<link type="language" lang="en" href="de.xml">Manual for German language set</link>
+	</link-group>
+
+	<history>
+		<entry>
+		<date>2009-05-28</date>
+		<rev-version>1.0.0</rev-version>
+		<changelog lang="de">
+			<change>Erstes separates Installationspaket für subsilver2</change>
+		</changelog>
+		<changelog lang="en">
+			<change>First seperate install package for subsilver2</change>
+		</changelog>
+		</entry>
+	</history>
+</header>
+
+<action-group>
+	<copy>
+		<file from="root/styles/subsilver2/imageset/*.*" to="styles/subsilver2/imageset/*.*" />
+		<file from="root/styles/subsilver2/template/dl_mod/*.*" to="styles/subsilver2/template/dl_mod/*.*" />
+		<file from="root/styles/subsilver2/theme/images/*.*" to="styles/subsilver2/theme/images/*.*" />
+	</copy>
+
+	<open src="styles/subsilver2/imageset/imageset.cfg">
+		<edit>
+		<find><![CDATA[img_icon_topic_unapproved = icon_topic_unapproved.gif*18*19]]></find>
+		<action type="after-add"><![CDATA[img_dl_blue = dl_blue.png*22*22
+img_dl_default = dl_default.png*32*32
+img_dl_edit = dl_edit.png*32*32
+img_dl_file_edit = dl_file_edit.png*16*16
+img_dl_file_new = dl_file_new.png*16*16
+img_dl_green = dl_green.png*22*22
+img_dl_grey = dl_grey.png*22*22
+img_dl_new = dl_new.png*32*32
+img_dl_new_edit = dl_new_edit.png*32*32
+img_dl_rate_no = dl_rate_no.png*22*22
+img_dl_rate_yes = dl_rate_yes.png*22*22
+img_dl_red = dl_red.png*22*22
+img_dl_white = dl_white.png*22*22
+img_dl_yellow = dl_yellow.png*22*22]]></action>
+		</edit>
+	</open>
+
+	<open src="styles/subsilver2/template/breadcrumbs.html">
+		<edit>
+		<find><![CDATA[			<p class="breadcrumbs"><a href="{U_INDEX}">{L_INDEX}</a><!-- BEGIN navlinks --> &#187; <a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a><!-- END navlinks --></p>]]></find>
+		<inline-edit>
+			<inline-find><![CDATA[<!-- END navlinks -->]]></inline-find>
+			<inline-action type="after-add"><![CDATA[<!-- BEGIN dl_nav --> &#187; <a href="{dl_nav.U_DOWNLOAD}">{dl_nav.L_DOWNLOAD}</a><!-- END dl_nav -->]]></inline-action>
+		</inline-edit>
+		</edit>
+	</open>
+
+	<open src="styles/subsilver2/template/overall_header.html">
+		<edit>
+		<find><![CDATA[</head>
+<body class="{S_CONTENT_DIRECTION}">]]></find>
+		<action type="before-add"><![CDATA[<!-- IF S_NEW_DL_POPUP -->
+<script type="text/javascript">
+// <![CDATA[
+	window.open('{U_NEW_DOWNLOAD_POPUP}', '_blank', 'HEIGHT=225,resizable=yes,WIDTH=400');
+// ]] >
+</script>
+<!-- ENDIF -->
+
+<!-- IF S_DL_LYTEBOX -->
+<script type="text/javascript" src="{ROOT_PATH}dl_mod/js/lytebox/lytebox.js"></script>
+<link rel="stylesheet" type="text/css" href="{ROOT_PATH}dl_mod/js/lytebox/lytebox.css" />
+<!-- ENDIF -->
+
+<!-- IF S_TOTAL_IMAGES -->
+<script type="text/javascript" src="{ROOT_PATH}dl_mod/js/jquery/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="{ROOT_PATH}dl_mod/js/jquery/jquery.jcarousel.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{ROOT_PATH}dl_mod/js/jquery/skins/tango/skin.css" />
+<!-- ENDIF -->]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[				<a href="{U_FAQ}"><img src="{T_THEME_PATH}/images/icon_mini_faq.gif" width="12" height="13" alt="*" /> {L_FAQ}</a>]]></find>
+		<action type="after-add"><![CDATA[				<!-- IF S_SHOW_DL_LINK -->&nbsp; &nbsp;<a href="{U_DL_NAVS}"><img src="{T_THEME_PATH}/images/icon_mini_dl.gif" width="13" height="13" alt="{L_DOWNLOADS}" /> {L_DOWNLOADS}</a><!-- ENDIF -->]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[				<!-- IF not S_IS_BOT -->]]></find>
+		<action type="after-add"><![CDATA[					<!-- IF S_HACKLIST_ON -->&nbsp; &nbsp;<a href="{U_HACKLIST}"><img src="{T_THEME_PATH}/images/icon_mini_hl.gif" width="13" height="13" alt="{L_HACKLIST}" /> {L_HACKLIST}</a><!-- ENDIF -->
+					<!-- IF S_BUGTRACKER_ON -->&nbsp; &nbsp;<a href="{U_BUG_TRACKER}"><img src="{T_THEME_PATH}/images/icon_mini_bt.gif" width="13" height="13" alt="{L_BUG_TRACKER}" /> {L_BUG_TRACKER}</a><!-- ENDIF -->]]></action>
+		</edit>
+		<edit>
+		<find><![CDATA[	<div id="datebar">]]></find>
+		<action type="after-add"><![CDATA[		<!-- IF S_NEW_DL_MESSAGE -->
+		<table width="100%" cellspacing="0">
+		<tr>
+			<td class="gensmall">{NEW_DOWNLOAD_MESSAGE}</td>
+		</tr>
+		</table>
+		<!-- ENDIF -->]]></action>
+		</edit>
+	</open>
+
+	<diy-instructions lang="en"><![CDATA[After the installation
+----------------------
+Please update all template and grafic packages from all styles to get the new contents from this mod.]]></diy-instructions>
+	<diy-instructions lang="de"><![CDATA[Nach der Installation
+----------------------
+Bitte aktualisiere alle Templates, Grafiksammlungen und Styles im ACP, um die Änderungen dieser MOD im Forum auch anzuzeigen.]]></diy-instructions>
+</action-group>
+
+</mod>
