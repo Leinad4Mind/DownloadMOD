@@ -888,8 +888,9 @@ $versions = array(
 	'6.5.24' => array(),
 	'6.5.25' => array(),
 	'6.5.26' => array(),
+	'6.5.27' => array(),
 
-	'6.5.27' => array(
+	'6.5.28' => array(
 		'cache_purge' => array(
 			'imageset',
 			'template',

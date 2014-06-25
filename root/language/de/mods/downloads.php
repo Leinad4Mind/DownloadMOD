@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				downloads.php 59 2014/03/07 OXPUS
+* @file				downloads.php 60 2014/06/18 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -540,6 +540,9 @@ $lang = array_merge($lang, array(
 
 	'DL_SEARCH_AUTHOR'			=> 'Nach Benutzern, die Downloads hochgeladen oder geändert haben',
 	'DL_SEARCH_DOWNLOAD'		=> 'Download suchen',
+	'DL_SEARCH_TYPE'			=> 'Suchergebnis einschränken',
+	'DL_SEARCH_TYPE_ALL'		=> 'Download muss alle Wörter beinhalten',
+	'DL_SEARCH_TYPE_SINGLE'		=> 'Download soll mindestens einen Wort beinhalten',
 	'DL_SELECT_CAT'				=> 'Kategoriewahl',
 	'DL_SELECT_CATS'			=> 'Wähle eine oder mehrere Kategorien aus',
 	'DL_SELECT_GROUP'			=> 'Auswahl Benutzergruppen',
