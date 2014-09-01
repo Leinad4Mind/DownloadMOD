@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				downloads.php 60 2014/06/18 OXPUS
+* @file				downloads.php 62 2014/09/01 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -163,7 +163,7 @@ $lang = array_merge($lang, array(
 	'DL_CAT_EDIT_LINK_1'				=> 'Nur Administratoren',
 	'DL_CAT_EDIT_LINK_2'				=> 'Administratoren und Download Moderatoren',
 	'DL_CAT_EDIT_LINK_3'				=> 'Administratoren, Download Moderatoren und eigene Downloads',
-	'DL_CAT_FILES'						=> 'Dateien',
+	'DL_CAT_FILES'						=> 'Datei(en)',
 	'DL_CAT_ICON'						=> 'Kategorie Icon',
 	'DL_CAT_INDEX'						=> 'Oberste Ebene',
 	'DL_CAT_NAME'						=> 'Kategorie',
@@ -595,8 +595,10 @@ $lang = array_merge($lang, array(
 	'DL_TOPIC_MORE_DETAILS_OVER'	=> 'Zeige Details im Topic über dem Standardtext',
 	'DL_TOPIC_MORE_DETAILS_UNDER'	=> 'Zeige Details im Topic unterhalb dem Standardtext',
 	'DL_TOPIC_NO_MORE_DETAILS'		=> 'Zeige nur Standardtext im Topic',
+	'DL_TOPIC_POST_CATNAME'			=> 'Kategoriename in Beitrag einfügen',
 	'DL_TOPIC_SUBJECT'				=> 'Thema zum Download %s',
 	'DL_TOPIC_TEXT'					=> 'Text für das Thema',
+	'DL_TOPIC_TITLE_CATNAME'		=> 'Kategoriename an Thementitel anhängen',
 	'DL_TOPIC_USER_CAT'				=> 'Auswahl über Kategorie',
 	'DL_TOPIC_USER_OTHER'			=> 'Benutzer über ID auswählen: ',
 	'DL_TOPIC_USER_SELF'			=> 'Der aktuelle Benutzer',

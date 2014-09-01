@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				dl_help.php 26 2013/06/11 OXPUS
+* @file				dl_help.php 27 2014/09/01 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -164,7 +164,9 @@ $lang = array_merge($lang, array(
 	'HELP_DL_USE_TODOLIST'				=> 'Aktiviert oder deaktiviert die ToDo-Liste.',
 	'HELP_DL_TOPIC_FORUM'				=> 'Das Forum, in dem alle neue Themen zu den Downloads erstellt werden.<br />Wähle anstelle eines Forums "Kategorieauswahl", um das Forum für Download Topics je Kategorie auswählen zu können.',
 	'HELP_DL_TOPIC_FORUM_C'				=> 'Das Forum, in dem alle neue Themen zu den Downloads dieser Kategorie erstellt werden.',
+	'HELP_DL_TOPIC_POST_CATNAME'		=> 'Fügt in den Beiträgen der Themen, welche für Downloads generiert werden, den Kategorienamen mit ein. Der Kategoriename wird dabei nach dem Download Namen eingefügt.<br />Hinweis:<br />Bestehende Themen werden nicht geändert. Erst nach der Bearbeitung der betreffenden Downloads erfolgt eine Aktualisierung der Beiträge in den Themen.',
 	'HELP_DL_TOPIC_TEXT'				=> 'Freitext, der für die Themen verwendet wird. BBCodes, HTML und Smilies sind hierbei nicht möglich, da es sich lediglich um einen einleitenden Text zum Thema handeln soll.',
+	'HELP_DL_TOPIC_TITLE_CATNAME'		=> 'Fügt beim Thema, welches für den Download generiert wird, den Kategorienamen an. Dieser wird durch ein - vom Download Titel getrennt.<br />Hinweis:<br />Bestehende Themen werden nicht geändert. Erst nach der Bearbeitung der betreffenden Downloads erfolgt eine Aktualisierung der Themen Titel.',
 	'HELP_DL_TOPIC_USER'				=> 'Wähle hier den Benutzer, der als Autor des Download Themas eingesetzt werden soll.<br />Wenn der aktuelle Benutzer Autor der Themen werden soll, dann ist die Option "Der aktuelle Benutzer" zu verwenden. Die Option über die Kategorie ermöglicht dagegen, einen Benutzer je Kategorie festzulegen. Dieses kann dann wiederum der aktuelle Benutzer sein oder ein anderer Benutzer, der über das Feld rechts neben dem Auswahlfeld mit seiner ID-Nummer vorgegeben wird. Dieses gilt auch, wenn die Auswahl "Benutzer über ID auswählen" angegeben wurde.<br /><br /><strong>Hinweis:</strong><br />Die Benutzer-ID wird durch die Download MOD nicht geprüft. Daher kann eine nicht existierende User-ID zu unerwarteten Störungen führen!',
 	'HELP_DL_TRAFFIC'					=> 'Maximaler Traffic, welcher durch die Datei erzeugt werden darf.<br />Der Wert 0 deaktiviert die Traffickontrolle',
 	'HELP_DL_TRAFFIC_OFF'				=> 'Schaltet die komplette Trafficverwaltung im Download Bereich ab und deaktiviert damit auch alle nachfolgenden Einstellungen zum Traffic.<br />Ist diese Option aktiviert, werden im Forum sämtliche Texte in Bezug auf den Download Traffic ausgeblendet und keine weiteren Trafficgrenzen berücksichtigt. Ebenso werden beim Download und Upload keine Trafficangaben mehr verändert.<br />Zu- oder Abschläge auf den Benutzertraffic beim Verfassen oder Löschen von Beiträgen werden ebenfalls nicht mehr berücksichtigt.<br />Automatisch vergebener Traffic wird mit Abschalten dieser Option nicht mehr den Benutzern zugeteilt. Jedoch kann man Benutzern oder Gruppenmitgliedern im Admininstrations-Bereich weiterhin Traffic setzen oder hinzufügen.<br />Ebenso bleiben im Administrations-Bereich alle Module, Texte und Funktionen für die Trafficverwaltung unverändert bestehen.',

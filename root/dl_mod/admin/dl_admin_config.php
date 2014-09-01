@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				dl_admin_config.php 35 2013/06/11 OXPUS
+* @file				dl_admin_config.php 36 2014/09/01 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -672,6 +672,12 @@ $s_dl_hash_algo = str_replace('value="' . $new['dl_file_hash_algo'] . '">', 'val
 $dl_similar_yes = ($new['dl_similar_dl']) ? 'checked="checked"' : '';
 $dl_similar_no = (!$new['dl_similar_dl']) ? 'checked="checked"' : '';
 
+$dl_topic_title_catname_yes = ($new['dl_topic_title_catname']) ? 'checked="checked"' : '';
+$dl_topic_title_catname_no = (!$new['dl_topic_title_catname']) ? 'checked="checked"' : '';
+
+$dl_topic_post_catname_yes = ($new['dl_topic_post_catname']) ? 'checked="checked"' : '';
+$dl_topic_post_catname_no = (!$new['dl_topic_post_catname']) ? 'checked="checked"' : '';
+
 add_form_key('dl_adm_config');
 
 $template->assign_vars(array(
@@ -866,6 +872,10 @@ $template->assign_vars(array(
 	'TODO_LINK_OFF_YES'					=> $todo_link_off_yes,
 	'TODO_OFF_NO'						=> $todo_off_no,
 	'TODO_OFF_YES'						=> $todo_off_yes,
+	'TOPIC_POST_CATNAME_YES'			=> $dl_topic_post_catname_yes,
+	'TOPIC_POST_CATNAME_NO'				=> $dl_topic_post_catname_no,
+	'TOPIC_TITLE_CATNAME_YES'			=> $dl_topic_title_catname_yes,
+	'TOPIC_TITLE_CATNAME_NO'			=> $dl_topic_title_catname_no,
 	'TRAFFIC_OFF_NO'					=> $traffic_off_no,
 	'TRAFFIC_OFF_YES'					=> $traffic_off_yes,
 	'U_CONFIG_OFF_NO'					=> $u_config_off_no,

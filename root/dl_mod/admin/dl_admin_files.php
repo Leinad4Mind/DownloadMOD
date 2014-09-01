@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				dl_admin_files.php 38 2014/06/14 OXPUS
+* @file				dl_admin_files.php 39 2014/08/28 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -486,6 +486,11 @@ else if($action == 'save')
 		generate_text_for_storage($long_desc, $long_desc_uid, $long_desc_bitfield, $long_desc_flags, $allow_bbcode, true, $allow_smilies);
 		generate_text_for_storage($mod_desc, $mod_desc_uid, $mod_desc_bitfield, $mod_desc_flags, $allow_bbcode, true, $allow_smilies);
 		generate_text_for_storage($warning, $warn_uid, $warn_bitfield, $warn_flags, $allow_bbcode, true, $allow_smilies);
+
+		if (!$description)
+		{
+			trigger_error($user->lang['NO_SUBJECT'], E_USER_WARNING);
+		}		
 
 		$send_notify			= request_var('send_notify', 0);
 		$change_time			= request_var('change_time', 0);

@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				dl_modcp.php 54 2014/05/01 OXPUS
+* @file				dl_modcp.php 55 2014/08/28 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -314,6 +314,11 @@ else
 				generate_text_for_storage($warning, $warn_uid, $warn_bitfield, $warn_flags, $allow_bbcode, $allow_urls, $allow_smilies);
 				generate_text_for_storage($todo, $todo_uid, $todo_bitfield, $todo_flags, $allow_bbcode, $allow_urls, $allow_smilies);
 		
+				if (!$description)
+				{
+					trigger_error($user->lang['NO_SUBJECT'], E_USER_WARNING);
+				}		
+				
 				if ($file_traffic_range == "KB")
 				{
 					$file_traffic = $file_traffic * 1024;

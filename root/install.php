@@ -889,8 +889,15 @@ $versions = array(
 	'6.5.25' => array(),
 	'6.5.26' => array(),
 	'6.5.27' => array(),
+	'6.5.28' => array(),
 
-	'6.5.28' => array(
+	'6.5.29' => array(
+		'table_row_insert' => array(
+			array('phpbb_config', array(
+				array('config_name' => 'dl_topic_title_catname', 'config_value' => '0'),
+				array('config_name' => 'dl_topic_post_catname', 'config_value' => '0'),
+			)),
+		),
 		'cache_purge' => array(
 			'imageset',
 			'template',
