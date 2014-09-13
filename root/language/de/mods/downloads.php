@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				downloads.php 62 2014/09/01 OXPUS
+* @file				downloads.php 63 2014/12/09 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -463,7 +463,8 @@ $lang = array_merge($lang, array(
 	'DL_OFF_NOW_TIME'			=> 'Sofort oder für Zeitspanne deaktivieren',
 	'DL_OFF_TIME'				=> 'Zeitspanne',
 	'DL_ON_ADMINS'				=> 'Administratoren weiterhin zulassen',
-	'DL_OFF_PERIOD'				=> 'Zeitspanne für Deaktivierung',
+	'DL_OFF_PERIOD'				=> 'Deaktivierung ab',
+	'DL_OFF_PERIOD_TILL'		=> 'Deaktivierung bis',
 	'DL_ORDER'					=> 'Sortieren',
 	'DL_OVERALL_GUEST_TRAFFIC'	=> 'Gesamttraffic für Gäste über alle Dateien je Monat',
 	'DL_OVERALL_KLICKS'			=> 'Klicks gesamt',
@@ -488,7 +489,7 @@ $lang = array_merge($lang, array(
 	'DL_PERMISSIONS'			=> 'Berechtigungen für Mitglieder nachfolgender Benutzergruppen',
 	'DL_PERMISSIONS_ALL'		=> 'Berechtigungen für alle Benutzer',
 	'DL_PHYSICAL_QUOTA'			=> 'Physikalisches Limit über alle Dateien',
-	'DL_PHYSICAL_QUOTA_EXPLAIN'	=> 'Wenn dieses Limit (aktuell %s belegt) erreicht ist, sind weiter Uploads nicht mehr möglich',
+	'DL_PHYSICAL_QUOTA_EXPLAIN'	=> 'Wenn dieses Limit (aktuell %s belegt) erreicht ist, sind weitere Uploads nicht mehr möglich',
 	'DL_POS'					=> 'Pos.',
 	'DL_POST_COMMENT'			=> 'Schreiben',
 	'DL_POSTS'					=> 'Anzahl Beiträge die ein User braucht, um downloaden zu können',
@@ -582,7 +583,8 @@ $lang = array_merge($lang, array(
 	'DL_THUMB_DEL'					=> 'Thumbnail erfolgreich gelöscht',
 	'DL_THUMB_DIM_SIZE'				=> 'Das Thumbnail kann bis zu %s x %s Pixel haben und die Datei muss kleiner als %s sein.',
 	'DL_THUMB_HINTS'				=> '<strong>Bitte beachten:</strong><br />Die nachfolgend angezeigten Bilder enthalten nicht das Thumbnail, welches im Downloads selber verwaltet wird. Dieses Thumbnail daher bitte dort bearbeiten.<br />Wenn ein Bild in dieser Verwaltung gelöscht wird, erfolgt keine Abfrage mehr! Dabei entfernt diese Verwaltung neben dem Eintrag im Downloads auch die Bilddatei.',
-	'DL_THUMB_MAX_DIM'				=> 'Maximale Thumbnail Abmessungen in Pixels x * y',
+	'DL_THUMB_MAX_DIM_X'			=> 'Maximale Thumbnail Breite in Pixeln',
+	'DL_THUMB_MAX_DIM_Y'			=> 'Maximale Thumbnail Höhe in Pixeln',
 	'DL_THUMB_MAX_SIZE'				=> 'Maximale Thumbnail DateiGröße',
 	'DL_THUMB_TO_BIG'				=> 'Das Thumbnail ist zu groß!<br />Bitte verwende eine kleinere Datei oder ein Bild mit kleineren Abmaßen.<br />Benutze den Zurück-Button deines Browsers, um den Upload erneut durchzuführen.',
 	'DL_THUMB_UPLOAD'				=> 'Thumbnail erfolgreich hochgeladen',
@@ -600,7 +602,7 @@ $lang = array_merge($lang, array(
 	'DL_TOPIC_TEXT'					=> 'Text für das Thema',
 	'DL_TOPIC_TITLE_CATNAME'		=> 'Kategoriename an Thementitel anhängen',
 	'DL_TOPIC_USER_CAT'				=> 'Auswahl über Kategorie',
-	'DL_TOPIC_USER_OTHER'			=> 'Benutzer über ID auswählen: ',
+	'DL_TOPIC_USER_OTHER'			=> 'Benutzer über ID auswählen',
 	'DL_TOPIC_USER_SELF'			=> 'Der aktuelle Benutzer',
 	'DL_TOPIC_USER'					=> 'Benutzer für Thema',
 	'DL_TOTAL_ENTRIES'				=> 'Gefundene Einträge',

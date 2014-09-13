@@ -898,6 +898,9 @@ $versions = array(
 				array('config_name' => 'dl_topic_post_catname', 'config_value' => '0'),
 			)),
 		),
+	),
+
+	'6.5.30' => array(
 		'cache_purge' => array(
 			'imageset',
 			'template',

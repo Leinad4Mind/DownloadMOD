@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				dl_help.php 22 2014/09/01 OXPUS
+* @file				dl_help.php 23 2014/09/13 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -32,7 +32,7 @@ $lang = array_merge($lang, array(
 
 	'DL_NO_HELP_AVIABLE' => 'There is no help aviable for this option',
 
-	'HELP_DL_ACTIVE_EXPLAIN'	=> 'Turns the Downloads accourding to the following options on or off.',
+	'HELP_DL_ACTIVE'			=> 'Turns the Downloads accourding to the following options on or off.',
 	'HELP_DL_ANTISPAM'			=> 'This option blocks downloads for which the user must have beside the required amount of traffic the required number of posted and the user posted the number of posts in the last hours.<br /><br />Example:<br />The settings contains 25 posts in 24 hours.<br />Based on this settings the downloads will blocked for the user if he/she will post 25 or more new posts in the last 24 hours.<br />This option shall prevent spamming for downloads, specially for new users, before a team member will get knowledge about this to take actions.<br />The download will still be shown as aviable to seduce the user. The user will only get a message about missing permissions.<br /><br />To disable this check just set one or both values to 0.',
 	'HELP_DL_APPROVE'			=> 'This will approve the download immediately if you will send this form.<br />On the other hand this download will be hidden for users.',
 	'HELP_DL_APPROVE_COMMENTS'	=> 'If you disable this option, each new comment must be approved by an download moderator or administrator before other user can see them.',
@@ -109,10 +109,11 @@ $lang = array_merge($lang, array(
 	'HELP_DL_NEWTOPIC_TRAFFIC'		=> 'For each new posted topic the author will get the here entered traffic on top of its traffic amount.',
 	'HELP_DL_NO_CHANGE_EDIT_TIME'	=> 'Check this option to suppress to update the latest edit time for this download.<br />This will not affected the email and popup notification/board message.',
 
-	'HELP_DL_OFF_HIDE_EXPLAIN'			=> 'Hides the link in the board navigation.<br />Otherwise the download area will only display a message.',
-	'HELP_DL_OFF_NOW_TIME_EXPLAIN'		=> 'Turns the downloads immediately off or deactivates the downloads regularly between the following timestamps.',
-	'HELP_DL_OFF_TIME_PERIOD_EXPLAIN'	=> 'Timeperiod the download will automatically turn off.',
-	'HELP_DL_ON_ADMINS_EXPLAIN'			=> 'Allows board administrators to enter the downloads and work within while the download mod is deactivated.<br />Otherwise the adminstrators will be locked out, too.',
+	'HELP_DL_OFF_HIDE'					=> 'Hides the link in the board navigation.<br />Otherwise the download area will only display a message.',
+	'HELP_DL_OFF_NOW_TIME'				=> 'Turns the downloads immediately off or deactivates the downloads regularly between the following timestamps.',
+	'HELP_DL_OFF_PERIOD'				=> 'Timeperiod the download will automatically turn off.',
+	'HELP_DL_OFF_PERIOD_TILL'			=> 'Timeperiod the download will automatically turn off.',
+	'HELP_DL_ON_ADMINS'					=> 'Allows board administrators to enter the downloads and work within while the download mod is deactivated.<br />Otherwise the adminstrators will be locked out, too.',
 	'HELP_DL_OVERALL_TRAFFIC'			=> 'The overall limit for registered users for all downloads and, if enabled, all uploads, too, which can not be exceeded in the current month.<br />After reaching this limit, each download will similar be marked and locked and, if enabled, uploads will be impossible, too.',
 	'HELP_DL_OVERALL_GUEST_TRAFFIC'		=> 'The overall limit for guests for all downloads and, if enabled, all uploads, too, which can not be exceeded in the current month.<br />After reaching this limit, each download will similar be marked and locked and, if enabled, uploads will be impossible, too.',
 	'HELP_DL_OVERVIEW_LINK'				=> 'Display the link to the overall list or hide it.<br />Hint:<br />While the link is diabled the overall list can not be opened within a direct link!',
@@ -154,7 +155,8 @@ $lang = array_merge($lang, array(
 
 	'HELP_DL_THUMB'						=> 'This field can upload a small image (note the displayed file size and image dimensions under this field) to display it in the download details.<br />If there already exists a thumbsnail, you can upload a new one to replace it.<br />Check the existing thumbnail for "delete" you will just drop it.',
 	'HELP_DL_THUMB_CAT'					=> 'This option enable Thumbnails on downloads in this category.<br />The size of these Images will base on the settings in the main configuration of this MOD.',
-	'HELP_DL_THUMB_MAX_DIM'				=> 'This values will limit the possible image size of uploaded files for thumbnails.<br />The thumbnails itselfs are at max 150 x 100 pixel and you can view the uploaded images in a popup if you click on a thumbnail.<br /><br />Enter 0 here to disable thumbnails (not recommended, if the thumbnail filesize will be set).<br />Existing thumbnails will be displayed until the thumbs filesize was not changed to 0, too.',
+	'HELP_DL_THUMB_MAX_DIM_X'			=> 'This values will limit the possible image width of uploaded files for thumbnails.<br />The thumbnails itselfs are at max 150 x 100 pixel and you can view the uploaded images in a popup if you click on a thumbnail.<br /><br />Enter 0 here to disable thumbnails (not recommended, if the thumbnail filesize will be set).<br />Existing thumbnails will be displayed until the thumbs filesize was not changed to 0, too.',
+	'HELP_DL_THUMB_MAX_DIM_Y'			=> 'This values will limit the possible image height of uploaded files for thumbnails.<br />The thumbnails itselfs are at max 150 x 100 pixel and you can view the uploaded images in a popup if you click on a thumbnail.<br /><br />Enter 0 here to disable thumbnails (not recommended, if the thumbnail filesize will be set).<br />Existing thumbnails will be displayed until the thumbs filesize was not changed to 0, too.',
 	'HELP_DL_THUMB_MAX_SIZE'			=> 'Enter 0 as filesize to disable thumbnails in all categories.<br />If you allow thumbsnails, then enter the maximim image sizes for the uploaded imagefiles to create new thumbnails from.<br />If you disable thumbnails you can not see existing thumbnails in the download details, too.',
 	'HELP_DL_TODO_LINK'					=> 'Switch the link for the todolist in the download footer on or off. >The todo entries the management about them are not affected while changing this option.',
 	'HELP_DL_USE_TODOLIST'				=> 'Acticate or disable the todo list.',

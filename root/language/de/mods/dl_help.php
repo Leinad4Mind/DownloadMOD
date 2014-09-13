@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				dl_help.php 27 2014/09/01 OXPUS
+* @file				dl_help.php 28 2014/09/13 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -35,7 +35,7 @@ $lang = array_merge($lang, array(
 
 	'DL_NO_HELP_AVIABLE'		=> 'Für dieses Thema steht keine Hilfe zur Verfügung.',
 
-	'HELP_DL_ACTIVE_EXPLAIN'	=> 'Schaltet den Download Bereich in Abhängigkeit der nachfolgenden Optionen ein oder aus.',
+	'HELP_DL_ACTIVE'			=> 'Schaltet den Download Bereich in Abhängigkeit der nachfolgenden Optionen ein oder aus.',
 	'HELP_DL_ANTISPAM'			=> 'Diese Option verhindert das Herunterladen von Dateien, für die der Benutzer eine gewisse Anzahl an Beiträgen im Forum verfasst haben muss, diese Anzahl Beiträge jedoch erst in den letzten Stunden im Forum hinterlassen hat.<br /><br />Beispiel:<br />Eingestellt werden 25 Beiträge in 24 Stunden.<br />Dadurch werden nicht freie Downloads, für die der Benutzer neben ausreichend Traffic auch die eingestellte Mindestanzahl Beiträge im Forum benötigt, dem Benutzer dann verwehrt, wenn er in den letzten 24 Stunden 25 und mehr Foren-Beiträge verfasst hat.<br />Somit soll verhindert werden, dass gerade Benutzer, die sich neu am Forum angemeldet haben, im Forum spammen, um die nötige Anzahl Beiträge zum Download bestimmter Dateien erreichen können, ohne dass dieses einem Teammitglied auffällt und weitere Maßnahmen ergriffen werden können.<br />Der Download wird dazu absichtlich für den Benutzer nicht als gesperrt angezeigt, so dass er in die Versuchung geführt wird, die Datei herunterladen zu können. Er erhält allerdings dann eine Meldung über fehlende Zugriffsberechtigungen.<br /><br />Um diese Prüfung abzuschalten, stelle mindestens einen der beiden Werte auf 0 ein.',
 	'HELP_DL_APPROVE'			=> 'Diese Einstellung gibt den Download sofort frei, wenn Du dieses Formular absendest.<br />Andernfalls wird dieser Downloads vor den Benutzern versteckt, bis ein Administrator oder Download Moderator den Download freigibt.',
 	'HELP_DL_APPROVE_COMMENTS'	=> 'Wenn Du diese Option deaktivierst, müssen neue Kommentare zunächst von einem Download Moderator oder Administrator freigegeben werden, bevor diese angezeigt werden.',
@@ -112,10 +112,11 @@ $lang = array_merge($lang, array(
 	'HELP_DL_NEWTOPIC_TRAFFIC'		=> 'Für jedes neue Topic, das gepostet wird, bekommt der Autor den hier eingestellten Traffic auf seinem Konto gutgeschrieben.',
 	'HELP_DL_NO_CHANGE_EDIT_TIME'	=> 'Wähle diese Option, um die Aktualisierung der Bearbeitungszeit zu unterdrücken.<br />Dieses betrifft nicht die Email und Popup Benachrichtigung/Board Nachricht.',
 
-	'HELP_DL_OFF_HIDE_EXPLAIN'			=> 'Schaltet den Link in der Boardnavigation ab, um den Download Bereich zu verstecken.<br />Andernfalls wird beim Aufruf des Download Bereiches eine Meldung angezeigt.',
-	'HELP_DL_OFF_NOW_TIME_EXPLAIN'		=> 'Schaltet die Download MOD sofort ab oder immer zwischen den nachfolgend eingestellten Uhrzeiten.',
-	'HELP_DL_OFF_TIME_PERIOD_EXPLAIN'	=> 'Zeitspanne, in der der Download Bereich automatisch deaktiviert wird.',
-	'HELP_DL_ON_ADMINS_EXPLAIN'			=> 'Erlaubt den Board-Administratoren weiterhin den Download Bereich zu betreten und darin zu arbeiten, auch wenn dieser deaktiviert ist.<br />Andernfalls werden auch diese Benutzer ausgesperrt.',
+	'HELP_DL_OFF_HIDE'					=> 'Schaltet den Link in der Boardnavigation ab, um den Download Bereich zu verstecken.<br />Andernfalls wird beim Aufruf des Download Bereiches eine Meldung angezeigt.',
+	'HELP_DL_OFF_NOW_TIME'				=> 'Schaltet die Download MOD sofort ab oder immer zwischen den nachfolgend eingestellten Uhrzeiten.',
+	'HELP_DL_OFF_PERIOD'				=> 'Zeitspanne, in der der Download Bereich automatisch deaktiviert wird.',
+	'HELP_DL_OFF_PERIOD_TILL'			=> 'Zeitspanne, in der der Download Bereich automatisch deaktiviert wird.',
+	'HELP_DL_ON_ADMINS'					=> 'Erlaubt den Board-Administratoren weiterhin den Download Bereich zu betreten und darin zu arbeiten, auch wenn dieser deaktiviert ist.<br />Andernfalls werden auch diese Benutzer ausgesperrt.',
 	'HELP_DL_OVERALL_TRAFFIC'			=> 'Das Limit des gesamten Traffics für registrierte Benutzer für alle Downloads und, sofern eingestellt, auch Uploads, der im aktuellen Monat nicht überschritten werden darf.<br />Wenn dieses Limit erreicht ist, wird jeder Download markiert und gesperrt.<br />Uploads werden dann, je nach Einstellung, ebenfalls nicht mehr möglich sein.',
 	'HELP_DL_OVERALL_GUEST_TRAFFIC'		=> 'Das Limit des gesamten Traffics für Gäste für alle Downloads und, sofern eingestellt, auch Uploads, der im aktuellen Monat nicht überschritten werden darf.<br />Wenn dieses Limit erreicht ist, wird jeder Download markiert und gesperrt.<br />Uploads werden dann, je nach Einstellung, ebenfalls nicht mehr möglich sein.',
 	'HELP_DL_OVERVIEW_LINK'				=> 'Zeigt den Link zur Gesamtübersicht an oder versteckt ihn.<br />Hinweis:<br />Wenn der Link versteckt wird, ist auch ein direkter Aufruf der Gesamtübersicht nicht mehr möglich!',
@@ -157,7 +158,8 @@ $lang = array_merge($lang, array(
 
 	'HELP_DL_THUMB'						=> 'Dieses Feld kann ein kleines Bild hochladen (beachte die angegebene DateiGröße und Bildmaße unterhalb dieses Feldes), das in den Download Details angezeigt wird.<br />Wenn bereits ein Thumbnail existiert, kannst Du hiermit ein neues hochladen, um das bestehende Bild zu ersetzen.<br />Wenn Du das bestehende Thumbnail mit "löschen" markierst, wird das alte Bild nur entfernt',
 	'HELP_DL_THUMB_CAT'					=> 'Diese Option lässt Thumbnails bei den Downloads dieser Kategorie zu.<br />Die Größe der Images ist von den Einstellungen in der allgemeinen Konfiguration des MODs abhängig.',
-	'HELP_DL_THUMB_MAX_DIM'				=> 'Diese Angaben begrenzen die mögliche Bildgröße hochzuladender Bilder, die als Thumbnail dargestellt werden.<br />Die Thumbnails selber sind maximal 150 x 100 Pixel groß und man kann mit einem Klick auf ein Thumbnail das hochgeladene Bild in einem Popup anzeigen lassen.<br /><br />Gib hier 0 ein, um Thumbnails zu deaktivieren (nicht empfehlenswert, wenn die Thumbsnail DateiGröße angegeben wurde).<br />Bestehende Thumbnails werden nach Änderungen dieser Angaben weiterhin angezeigt, sofern nicht die Dateigröße auf 0 gesetzt wurde.',
+	'HELP_DL_THUMB_MAX_DIM_X'			=> 'Diese Angaben begrenzen die mögliche Bildbreite hochzuladender Bilder, die als Thumbnail dargestellt werden.<br />Die Thumbnails selber sind maximal 150 x 100 Pixel groß und man kann mit einem Klick auf ein Thumbnail das hochgeladene Bild in einem Popup anzeigen lassen.<br /><br />Gib hier 0 ein, um Thumbnails zu deaktivieren (nicht empfehlenswert, wenn die Thumbsnail DateiGröße angegeben wurde).<br />Bestehende Thumbnails werden nach Änderungen dieser Angaben weiterhin angezeigt, sofern nicht die Dateigröße auf 0 gesetzt wurde.',
+	'HELP_DL_THUMB_MAX_DIM_Y'			=> 'Diese Angaben begrenzen die mögliche Bildhöhe hochzuladender Bilder, die als Thumbnail dargestellt werden.<br />Die Thumbnails selber sind maximal 150 x 100 Pixel groß und man kann mit einem Klick auf ein Thumbnail das hochgeladene Bild in einem Popup anzeigen lassen.<br /><br />Gib hier 0 ein, um Thumbnails zu deaktivieren (nicht empfehlenswert, wenn die Thumbsnail DateiGröße angegeben wurde).<br />Bestehende Thumbnails werden nach Änderungen dieser Angaben weiterhin angezeigt, sofern nicht die Dateigröße auf 0 gesetzt wurde.',
 	'HELP_DL_THUMB_MAX_SIZE'			=> 'Gib  0 als DateiGröße an, um Thumbnails in allen Kategorien abzuschalten.<br />Wenn Du Thumbnails erlaubst, dann gib in der nächsten Einstellung bitte die Bildmaße an, die die hochzuladenden Bilder maximal haben dürfen, aus denen die Thumbnails dargestellt werden.<br />Werden Thumbnails deaktiviert, zeigen die Download Details bestehene Thumbnails ebenfalls nicht mehr an.',
 	'HELP_DL_TOPIC_DETAILS'				=> 'Zeigt die Download Beschreibung, Dateiname und Größe, bzw. bei externen Downloads die URL des Downloads mit im Forum Thema an.<br />Der Text kann dabei über oder unterhalb dem zuvor eingetragenen Text angezeigt werden.<br />Wenn das Thema über die Downloadkategorien angelegt wird, ist diese Option in der allgemeinen Konfiguration nicht relevant.',
 	'HELP_DL_TODO_LINK'					=> 'Schaltet im Fußbereich der Download MOD den Link zur Todoliste an oder aus. Die Todo-Daten und die Verwaltung in den Downloads bleiben hiervon unberührt.',
