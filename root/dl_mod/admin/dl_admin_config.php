@@ -160,11 +160,11 @@ switch ($view)
 
 		if (file_exists("{$phpbb_root_path}portal.$phpEx"))
 		{
-			$display_vars['vars'] &= array(
+			$display_vars['vars'] = array_merge($display_vars['vars'], array(
 				'legend6'				=> '',
 		
 				'dl_recent_downloads'	=> array('lang' => 'NUMBER_RECENT_DL_ON_PORTAL',	'validate' => 'int',	'type' => 'text:3:4',	'explain' => false,		'help_key' => 'NUMBER_RECENT_DL_ON_PORTAL'),
-			);
+			));
 		}
 
 	break;
