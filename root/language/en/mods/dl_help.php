@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				dl_help.php 23 2014/09/13 OXPUS
+* @file				dl_help.php 24 2014/10/08 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -67,7 +67,7 @@ $lang = array_merge($lang, array(
 	'HELP_DL_ENABLE_RATE'			=> 'With this option you can enable/disable the rating system.<br />If there are still exists rating points they will not be deleted and the mod shown them immediatly if you enable the rating system again.',
 	'HELP_DL_ENABLE_TOPIC'			=> 'Allowes to create a topic for each new download which will be uploaded or added within the administration panel into the following forum and with the given text. For download which must be approved before be displayed the topic will be created over the moderation panel.',
 	'HELP_DL_EXT_NEW_WINDOW'		=> 'Open external downloads in a new browser window or load them into the current window.',
-	'HELP_DL_EXTERN'				=> 'Activate this function for an external files which you will enter in the field above (http://www.example.com/media.mp3).<br />The function "free" becomes insignificant.',
+	'HELP_DL_EXTERN'				=> 'Activate this function for an external files which you will enter in the field above (http://www.example.com/media.mp3).<br />The function "free" becomes insignificant.<br />Optional you can enter the file size for the external download. This size will be displayed in all pages.<br />Regard that here you will see the file size of internal downloads, too. In this case changes of this value will be ignored and replaces with the real file size of the download.',
 	'HELP_DL_EXTERN_UP'				=> 'Activate this function for an external files which you will enter in the right field (http://www.example.com/media.mp3).insignificantThe function "free" becomes insignificant.',
 
 	'HELP_DL_FILE_DESCRIPTION'	=> 'A short description for this download.<br />This will be displayed in the download category, too.<br />BBCodes are off for this text.<br />Please enter only a short text to reduces heavy data loads while open the category.',
@@ -167,7 +167,7 @@ $lang = array_merge($lang, array(
 	'HELP_DL_TOPIC_TEXT'				=> 'Free text for creating the topics about the downloads. BBCodes, HTML and smileys are not allowed here because the text shall only be used to introduce the topic.',
 	'HELP_DL_TOPIC_TITLE_CATNAME'		=> 'Adds the category name to the topic title which will be generated for downloads. The category name will be separeted by - from the download name.<br />Regard:<br />Existing topics will not be updated until the download will be updated, too.',
 	'HELP_DL_TOPIC_USER'				=> 'Select here, which user shall be autor of the download topics.<br />If the current user should be the topic author, then select the option current user. The Option selected by category allows to chooce for each category a seperately topic user. This can still be the current user or over ID selected user which is entered in the fields on the rightside of the drop down field. This is recommended for the option "Select user over ID".<br /><br /><strong>Hint:</strong><br />The user id will not be checked by the download mod itself, so a not existing ID can disrupt the functions!',
-	'HELP_DL_TRAFFIC'					=> 'The maximum of traffic a file will be allowed to produce.<br />A value of 0 deactivates the traffic control',
+	'HELP_DL_TRAFFIC'					=> 'The maximum of traffic a file will be allowed to produce.<br />A value of 0 deactivates the traffic control.<br />Regard that the file traffic will be set to 0, even the download is marked as external.',
 	'HELP_DL_TRAFFIC_OFF'				=> 'Turns the entire traffic management in the download area off and deactivated all following options about the traffic, too.<br />Enabling this option will hidden all the texts about the download traffic in the forum and does not consider other traffic limits. Similarly during the download and upload traffic data are not changed any more.<br />Changes to the user traffic while writing or deleting posts are not taken on user accounts as well.<br />Automatically assigned traffic will not longer allocate to users if this option is turned off. However users or group members can still get traffic with the ACP traffic management module.<br />Also in the admin area all modules, texts and functions for traffic management will be still unchanged.',
 	'HELP_DL_TRAFFICS_FOUNDER'			=> 'While the traffic management is disabled for founders, these users can unlimited download and upload files against the traffic options.<br />These users will also not get automatically traffic amounts and will not get traffic points on add a topic or post, even this option is enabled, too.<br />This option will freeze the current traffic amount for founders until this option will be disabled.',
 	'HELP_DL_TRAFFICS_OVERALL'			=> 'This option will set a limit for the overall traffic for registered users.<br />The overall traffic can be enabled or disabled for all registered users or can be set only for members of the user groups which can be selected in the next option.<br />If the overall traffic was disabled all affected users can unlimit download and upload files.',
