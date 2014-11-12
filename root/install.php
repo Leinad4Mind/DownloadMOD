@@ -901,8 +901,9 @@ $versions = array(
 	),
 
 	'6.5.30' => array(),
+	'6.5.31' => array(),
 
-	'6.5.31' => array(
+	'6.5.32' => array(
 		'cache_purge' => array(
 			'imageset',
 			'template',

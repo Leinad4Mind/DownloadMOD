@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				dl_admin_files.php 40 2014/10/08 OXPUS
+* @file				dl_admin_files.php 41 2014/11/12 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -66,7 +66,7 @@ if($action == 'edit' || $action == 'add')
 	if($action == 'edit')
 	{
 		$description			= (isset($dl_file['description'])) ? $dl_file['description'] : '';
-		$file_traffic			= (isset($dl_file['file_traffic'])) ? $dl_file['file_traffic'] : '';
+		$file_traffic			= (isset($dl_file['file_traffic'])) ? $dl_file['file_traffic'] : 0;
 		$dl_extern				= (isset($dl_file['extern'])) ? $dl_file['extern'] : 0;
 		$dl_extern_size			= (isset($dl_file['file_size'])) ? $dl_file['file_size'] : 0;
 		$file_name				= (isset($dl_file['file_name']) && $dl_extern) ? $dl_file['file_name'] : '';
@@ -455,7 +455,7 @@ else if($action == 'save')
 		}
 
 		$description			= utf8_normalize_nfc(request_var('description', '', true));
-		$file_traffic			= request_var('file_traffic', '');
+		$file_traffic			= request_var('file_traffic', 0);
 		$approve				= request_var('approve', 0);
 
 		$hacklist				= request_var('hacklist', 0);

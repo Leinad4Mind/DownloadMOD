@@ -3,7 +3,7 @@
 /**
 *
 * @mod package		Download Mod 6
-* @file				dl_upload.php 45 2014/10/08 OXPUS
+* @file				dl_upload.php 46 2014/11/12 OXPUS
 * @copyright		(c) 2005 oxpus (Karsten Ude) <webmaster@oxpus.de> http://www.oxpus.de
 * @copyright mod	(c) hotschi / demolition fabi / oxpus
 * @license			http://opensource.org/licenses/gpl-license.php GNU Public License
@@ -47,7 +47,7 @@ if ($submit)
 
 	$approve			= request_var('approve', 0);
 	$description		= utf8_normalize_nfc(request_var('description', '', true));
-	$file_traffic		= request_var('file_traffic', '');
+	$file_traffic		= request_var('file_traffic', 0);
 	$long_desc			= utf8_normalize_nfc(request_var('long_desc', '', true));
 	$file_name_name		= utf8_normalize_nfc(request_var('file_name', '', true));
 
