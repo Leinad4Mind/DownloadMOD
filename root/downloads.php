@@ -262,6 +262,17 @@ else
 	$description = $user->lang['DL_DOWNLOAD'];
 }
 
+if ($cat_id || $cat)
+{
+	$check_cat = ($cat_id) ? $cat_id : $cat;
+
+	$check_index = dl_main::full_index();
+	if (!isset($check_index[$check_cat]))
+	{
+		redirect(append_sid("{$phpbb_root_path}downloads.$phpEx"));
+	}
+}
+
 if ($cat_id)
 {
 	$cat_auth = dl_auth::user_auth($cat_id, 'auth_view');
